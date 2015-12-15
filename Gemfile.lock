@@ -1,0 +1,89 @@
+GIT
+  remote: https://github.com/everypolitician/wikidata-fetcher.git
+  revision: 757c22638a3d2775f6ad92a8e46f78a5817dba2e
+  specs:
+    wikidata-fetcher (0.6.1)
+      colorize
+      diskcached
+      mediawiki_api
+      wikidata-client (~> 0.0.7)
+
+GIT
+  remote: https://github.com/openaustralia/scraperwiki-ruby.git
+  revision: fc50176812505e463077d5c673d504a6a234aa78
+  branch: morph_defaults
+  specs:
+    scraperwiki (3.0.1)
+      httpclient
+      sqlite_magic
+
+GIT
+  remote: https://github.com/openc/sqlite_magic.git
+  revision: 4df975eb4e9891de54f870077c83f63762af9bf9
+  specs:
+    sqlite_magic (0.0.6)
+      sqlite3
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    coderay (1.1.0)
+    colorize (0.7.7)
+    diskcached (1.1.2)
+    domain_name (0.5.24)
+      unf (>= 0.0.5, < 1.0.0)
+    excon (0.45.4)
+    faraday (0.9.1)
+      multipart-post (>= 1.2, < 3)
+    faraday-cookie_jar (0.0.6)
+      faraday (>= 0.7.4)
+      http-cookie (~> 1.0.0)
+    faraday_middleware (0.10.0)
+      faraday (>= 0.7.4, < 0.10)
+    hashie (3.4.2)
+    http-cookie (1.0.2)
+      domain_name (~> 0.5)
+    httpclient (2.6.0.1)
+    mediawiki_api (0.5.0)
+      faraday (~> 0.9, >= 0.9.0)
+      faraday-cookie_jar (~> 0.0, >= 0.0.6)
+    method_source (0.8.2)
+    mime-types (2.6.2)
+    mini_portile (0.6.2)
+    multipart-post (2.0.0)
+    netrc (0.10.3)
+    nokogiri (1.6.6.2)
+      mini_portile (~> 0.6.0)
+    open-uri-cached (0.0.5)
+    pry (0.10.2)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    rest-client (1.8.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
+    slop (3.6.0)
+    sqlite3 (1.3.10)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.1)
+    wikidata-client (0.0.8)
+      excon (~> 0.40)
+      faraday (~> 0.9)
+      faraday_middleware (~> 0.9)
+      hashie (~> 3.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  colorize
+  mediawiki_api
+  nokogiri
+  open-uri-cached
+  pry
+  rest-client
+  scraperwiki!
+  sqlite_magic!
+  wikidata-fetcher (>= 0.6.1)!
