@@ -4,12 +4,31 @@
 require 'wikidata/fetcher'
 require 'pry'
 
+def ids_from_claim(claim_str)
+  url = 'https://wdq.wmflabs.org/api?q=%s' % claim_str
+  json = JSON.parse(open(url).read, symbolize_names: true)
+  json[:items].map { |id| "Q#{id}" }
+end
+
 names = EveryPolitician::Wikidata.wikipedia_xpath( 
   url: 'https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Argentina_de_2013',
   after: '//span[@id="Diputados_elegidos"]',
   xpath: './/table[1]//tr//td[1]//a[not(@class="new")]/@title',
 ) 
 
-EveryPolitician::Wikidata.scrape_wikidata(names: { es: names }, output: true)
+# Position = Member of Argentine Chamber of Deputies
+ids = ids_from_claim('claim[39:18229570]')
+people = Wikisnakker::Item.find(ids)
+recent = people.select do |mp|
+  mp.P39s.find do |posn|
+    # https://github.com/everypolitician/wikisnakker/issues/23
+    start_date = posn.qualifiers.P580.value rescue nil
+    start_date && start_date[0...4].to_i >= 2013
+  end
+end
+#TODO be able to pass the IDs straight through
+names2 = recent.map { |mp| mp.label('es') }
+
+EveryPolitician::Wikidata.scrape_wikidata(names: { es: (names + names2).uniq }, output: false)
 warn EveryPolitician::Wikidata.notify_rebuilder
 
