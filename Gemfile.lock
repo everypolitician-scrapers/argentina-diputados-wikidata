@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: https://github.com/everypolitician/wikisnakker
-  revision: 59eea8263eb53874c7e7cbad3a84c42962bafab5
+  revision: a9d6711f0a08ba6024425e5ced0b7e89ef6e8b14
   branch: master
   specs:
     wikisnakker (0.0.1)
