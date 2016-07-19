@@ -20,5 +20,5 @@ recent = people.select do |mp|
   end
 end
 
-EveryPolitician::Wikidata.scrape_wikidata(ids: recent.map(&:id), names: { es: names })
+EveryPolitician::Wikidata.scrape_wikidata(ids: recent.map(&:id), names: { es: names }, batch_size: 250)
 
