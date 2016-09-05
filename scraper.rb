@@ -42,3 +42,5 @@ end
 warn "    = #{recent.count} recent"
 
 EveryPolitician::Wikidata.scrape_wikidata(ids: recent.map(&:id), batch_size: 100)
+
+warn "DONE!"
