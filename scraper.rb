@@ -41,6 +41,6 @@ recent = people.select do |mp|
 end
 warn "    = #{recent.count} recent"
 
-# EveryPolitician::Wikidata.scrape_wikidata(ids: recent.map(&:id), batch_size: 50)
+EveryPolitician::Wikidata.scrape_wikidata(ids: recent.map(&:id), batch_size: 25)
 
 warn "DONE!"
