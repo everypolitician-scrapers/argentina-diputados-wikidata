@@ -14,10 +14,10 @@ GIT
 
 GIT
   remote: https://github.com/everypolitician/wikisnakker
-  revision: a9d6711f0a08ba6024425e5ced0b7e89ef6e8b14
+  revision: cc55a4f45290c8ad86dc3e2a41ea678e02e3dd94
   branch: master
   specs:
-    wikisnakker (0.0.1)
+    wikisnakker (0.7.0)
 
 GIT
   remote: https://github.com/openaustralia/scraperwiki-ruby.git
@@ -101,5 +101,8 @@ DEPENDENCIES
   wikidata-fetcher (>= 0.15.0)!
   wikisnakker!
 
+RUBY VERSION
+   ruby 2.0.0p648
+
 BUNDLED WITH
-   1.11.2
+   1.12.5
