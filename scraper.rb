@@ -10,8 +10,6 @@ names = EveryPolitician::Wikidata.wikipedia_xpath(
   xpath: './/table[1]//tr//td[1]//a[not(@class="new")]/@title',
 )
 warn " = #{names.count} people"
-EveryPolitician::Wikidata.scrape_wikidata(names: { es: names }, batch_size: 100)
-
 
 # -------------------------------------------------------------------------------
 
@@ -41,6 +39,5 @@ recent = people.select do |mp|
 end
 warn "    = #{recent.count} recent"
 
-EveryPolitician::Wikidata.scrape_wikidata(ids: recent.map(&:id), batch_size: 25)
-
+EveryPolitician::Wikidata.scrape_wikidata(ids: recent.map(&:id), names: { es: names })
 warn "DONE!"
