@@ -20,6 +20,6 @@ gem 'scraperwiki', github: 'openaustralia/scraperwiki-ruby', branch: 'morph_defa
 gem 'sqlite_magic', github: 'openc/sqlite_magic'
 
 gem 'everypolitician', github: 'everypolitician/everypolitician-ruby'
-gem 'wikidata-fetcher', '>=0.17.0', github: 'everypolitician/wikidata-fetcher'
+gem 'wikidata-fetcher', '>=0.19.0', github: 'everypolitician/wikidata-fetcher'
 gem 'wikisnakker', github: 'everypolitician/wikisnakker'
 
