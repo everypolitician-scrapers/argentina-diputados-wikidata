@@ -3,7 +3,6 @@
 
 require 'wikidata/fetcher'
 
-warn "2013 election"
 names = EveryPolitician::Wikidata.wikipedia_xpath(
   url: 'https://es.wikipedia.org/wiki/Elecciones_legislativas_de_Argentina_de_2013',
   after: '//span[@id="Diputados_elegidos"]',
@@ -13,22 +12,11 @@ warn " = #{names.count} people"
 
 # -------------------------------------------------------------------------------
 
-warn "Wikidata lookup"
-WIKIDATA_SPARQL_URL = 'https://query.wikidata.org/sparql'
-
-def wikidata_sparql(query)
-  result = RestClient.get WIKIDATA_SPARQL_URL, params: { query: query, format: 'json' }
-  json = JSON.parse(result, symbolize_names: true)
-  json[:results][:bindings].map { |res| res[:item][:value].split('/').last }
-rescue RestClient::Exception => e
-  abort "Wikidata query #{query.inspect} failed: #{e.message}"
-end
-
 # Position = Member of Argentine Chamber of Deputies
 # ids = EveryPolitician::Wikidata.wdq('claim[39:18229570]')
-ids = wikidata_sparql('SELECT ?item WHERE { ?item wdt:P39 wd:Q18229570 . }')
+sparq = 'SELECT ?item WHERE { ?item wdt:P39 wd:Q18229570 . }'
+ids = EveryPolitician::Wikidata.sparql(sparq)
 
-warn "  Fetching #{ids.count} items"
 people = Wikisnakker::Item.find(ids)
 recent = people.select do |mp|
   mp.P39s.find do |posn|
@@ -37,7 +25,5 @@ recent = people.select do |mp|
     start_date && start_date[0...4].to_i >= 2013
   end
 end
-warn "    = #{recent.count} recent"
 
 EveryPolitician::Wikidata.scrape_wikidata(ids: recent.map(&:id), names: { es: names })
-warn "DONE!"
