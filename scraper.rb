@@ -10,20 +10,13 @@ names = EveryPolitician::Wikidata.wikipedia_xpath(
 )
 warn " = #{names.count} people"
 
-# -------------------------------------------------------------------------------
-
 # Position = Member of Argentine Chamber of Deputies
-# ids = EveryPolitician::Wikidata.wdq('claim[39:18229570]')
-sparq = 'SELECT ?item WHERE { ?item wdt:P39 wd:Q18229570 . }'
+sparq = <<EOQ
+  SELECT ?item ?start WHERE {
+    ?item p:P39 [ ps:P39 wd:Q18229570 ; pq:P580 ?start ] .
+    FILTER (?start >= "2013-01-01T00:00:00Z"^^xsd:dateTime) .
+  }
+EOQ
 ids = EveryPolitician::Wikidata.sparql(sparq)
 
-people = Wikisnakker::Item.find(ids)
-recent = people.select do |mp|
-  mp.P39s.find do |posn|
-    # https://github.com/everypolitician/wikisnakker/issues/23
-    start_date = posn.qualifiers.P580.value rescue nil
-    start_date && start_date[0...4].to_i >= 2013
-  end
-end
-
-EveryPolitician::Wikidata.scrape_wikidata(ids: recent.map(&:id), names: { es: names })
+EveryPolitician::Wikidata.scrape_wikidata(ids: ids, names: { es: names })
