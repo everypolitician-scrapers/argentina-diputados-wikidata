@@ -12,9 +12,11 @@ warn " = #{names.count} people"
 
 # Position = Member of Argentine Chamber of Deputies
 sparq = <<EOQ
-  SELECT ?item ?start WHERE {
-    ?item p:P39 [ ps:P39 wd:Q18229570 ; pq:P580 ?start ] .
-    FILTER (?start >= "2013-01-01T00:00:00Z"^^xsd:dateTime) .
+  SELECT ?item ?start ?end WHERE {
+    ?item p:P39 ?posn .
+    ?posn ps:P39 wd:Q18229570 ; pq:P580 ?start .
+    OPTIONAL { ?posn pq:P582 ?end }
+    FILTER (?start >= "2013-01-01T00:00:00Z"^^xsd:dateTime || ?end >= "2013-01-01T00:00:00Z"^^xsd:dateTime) .
   }
 EOQ
 ids = EveryPolitician::Wikidata.sparql(sparq)
