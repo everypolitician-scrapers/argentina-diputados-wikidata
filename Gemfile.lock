@@ -8,9 +8,9 @@ GIT
 
 GIT
   remote: https://github.com/everypolitician/wikidata-fetcher.git
-  revision: 6cbd151eb97f9fdf3a24e9b8ec474b68b4c29034
+  revision: 69ea1ee46cf5c727ba7965dbc4ee94dd3610c77c
   specs:
-    wikidata-fetcher (0.20.2)
+    wikidata-fetcher (0.21.0)
       colorize
       diskcached
       json
@@ -58,7 +58,7 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     everypolitician-popolo (0.8.0)
       require_all
-    excon (0.55.0)
+    excon (0.58.0)
     faraday (0.12.1)
       multipart-post (>= 1.2, < 3)
     faraday-cookie_jar (0.0.6)
@@ -66,7 +66,7 @@ GEM
       http-cookie (~> 1.0.0)
     faraday_middleware (0.11.0.1)
       faraday (>= 0.7.4, < 1.0)
-    hashie (3.5.5)
+    hashie (3.5.6)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     httpclient (2.8.3)
@@ -137,7 +137,7 @@ DEPENDENCIES
   rubocop
   scraperwiki!
   sqlite_magic!
-  wikidata-fetcher (>= 0.20.2)!
+  wikidata-fetcher (>= 0.21)!
   wikisnakker!
 
 RUBY VERSION

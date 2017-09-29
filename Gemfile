@@ -20,7 +20,7 @@ gem 'rest-client'
 gem 'scraperwiki', github: 'openaustralia/scraperwiki-ruby',
                    branch: 'morph_defaults'
 gem 'sqlite_magic', github: 'openc/sqlite_magic'
-gem 'wikidata-fetcher', '>=0.20.2', github: 'everypolitician/wikidata-fetcher'
+gem 'wikidata-fetcher', '>=0.21', github: 'everypolitician/wikidata-fetcher'
 gem 'wikisnakker', github: 'everypolitician/wikisnakker'
 
 group :quality do
